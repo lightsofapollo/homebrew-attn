@@ -2,20 +2,37 @@ class Attn < Formula
   desc "A beautiful markdown viewer that launches from the CLI"
   homepage "https://github.com/lightsofapollo/attn"
   license "MIT"
-  version "0.3.5"
+  version "0.4.0"
 
   on_macos do
     on_arm do
       url "https://github.com/lightsofapollo/attn/releases/download/v#{version}/attn-v#{version}-darwin-arm64.app.zip"
-      sha256 "9114301976d007f98a3c870e0023902b66ec07bd6bc25b77c8129d1ed2aee9a8"
+      sha256 "e1af7b79002d311d713f58ebd16af7e723501bd62987b94955c34de72cb70fba"
     end
   end
 
   on_linux do
     on_intel do
       url "https://github.com/lightsofapollo/attn/releases/download/v#{version}/attn-v#{version}-linux-x64"
-      sha256 "e415118a6ac27e5f3e3bd3b01e26b34e10812fa7c22ac1653f1e304a56fd7ff8"
+      sha256 "7b68b4d6f60b565c728865a03abe43f14b10359f8ea51e5fd43847b429bacab6"
     end
+  end
+
+  # attn is a wry/WebKitGTK desktop app. The Linux binary dynamically links the
+  # system GTK/WebKit/appindicator libraries (it's built against them on CI), so
+  # they must be present at runtime. We do NOT `depends_on` Homebrew's gtk — that
+  # would pull a parallel GTK stack that conflicts with the system one for a GUI
+  # app — and instead point users at their distro packages.
+  def caveats
+    return unless OS.linux?
+
+    <<~EOS
+      attn is a GTK/WebKitGTK desktop app. On Linux it needs these system
+      libraries at runtime — install them with your package manager, e.g. on
+      Debian/Ubuntu:
+        sudo apt-get install libgtk-3-0 libwebkit2gtk-4.1-0 libayatana-appindicator3-1
+      (Fedora: gtk3 webkit2gtk4.1 libayatana-appindicator-gtk3)
+    EOS
   end
 
   def install
