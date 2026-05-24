@@ -1,6 +1,6 @@
 cask "attn" do
-  version "0.6.1"
-  sha256 "4c42c28ac430374a92d15485ff348f1e86017232140b718b786ece0d71a0a2f6"
+  version "0.6.2"
+  sha256 "87e005c79b60e2ff63d3a4dab83d755dc9c094aa9fd22c5ef6f7ac9c6dbf6403"
 
   url "https://github.com/lightsofapollo/attn/releases/download/v#{version}/attn-v#{version}-darwin-arm64.app.zip"
   name "attn"
