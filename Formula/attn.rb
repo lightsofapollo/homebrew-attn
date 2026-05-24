@@ -2,19 +2,19 @@ class Attn < Formula
   desc "A beautiful markdown viewer that launches from the CLI"
   homepage "https://github.com/lightsofapollo/attn"
   license "MIT"
-  version "0.6.0"
+  version "0.6.1"
 
   on_macos do
     on_arm do
       url "https://github.com/lightsofapollo/attn/releases/download/v#{version}/attn-v#{version}-darwin-arm64.app.zip"
-      sha256 "f7642042414aa9ee7f9e26f8f20032dc17f8a6feeb4046e999ab4ded8d747202"
+      sha256 "4c42c28ac430374a92d15485ff348f1e86017232140b718b786ece0d71a0a2f6"
     end
   end
 
   on_linux do
     on_intel do
       url "https://github.com/lightsofapollo/attn/releases/download/v#{version}/attn-v#{version}-linux-x64"
-      sha256 "78dd4d81802abfbd0703ca88ddf286fb582bd0cccb2de2c043727a5e8bc0ca83"
+      sha256 "b1446f557fc194d84e2b32eddc28521e6c2f6f6bcaf53cd380c16a6066d2a6ec"
     end
   end
 
